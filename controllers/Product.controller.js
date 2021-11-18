@@ -1,7 +1,7 @@
 const { Mongoose } = require("mongoose");
 const Product = require("../models/Categorie.model");
 
-module.exports.productSchema = {
+module.exports.productConroller = {
   getProduct: async (req, res) => {
     try {
       const productFind = await Product.find();
