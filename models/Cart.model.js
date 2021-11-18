@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const { Types } = require("mongoose");
 const Schema = mongoose.Schema;
 const cartsSchema = mongoose.Schema({
-  name: {
-    type: String,
+  amount: {
+    type: Number,
     required: true
   },
   user: {
