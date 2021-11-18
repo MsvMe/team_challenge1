@@ -1,8 +1,7 @@
 const {Router} = require("express");
+const {reviewsController} = require("../controllers/reviews.controller");
 
 const router = Router();
-
-const {reviewsController} = require("../controllers/reviews.controller");
 
 router.get('/reviews', reviewsController.getAllReviews);
 router.get('/reviews/:id', reviewsController.getReviewsById);

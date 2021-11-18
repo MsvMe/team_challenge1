@@ -1,4 +1,5 @@
-const Carts = require("../models/Cart.model.model");
+const Carts = require("../models/Cart.model");
+
 module.exports.controllerCarts = {
   postCarts: async (req, res) => {
     try {

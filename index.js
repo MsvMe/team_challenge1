@@ -5,7 +5,7 @@ const app = express()
 const PORT = 4000
 
 app.use(express.json())
-// app.use(require('./routes/index'))
+app.use(require('./routes/index'))
 
 const connect = async () => {
   try {
