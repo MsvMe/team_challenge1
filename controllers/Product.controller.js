@@ -16,6 +16,7 @@ module.exports.productConroller = {
         name: req.body.name,
         price: req.body.name,
         availability: req.body.name,
+        amout: req.body.name
       });
       res.json("Продукт добавлен");
     } catch (e) {
@@ -35,7 +36,13 @@ module.exports.productConroller = {
       await Product.findByIdAndUpdate(
         req.params.id,
         { categorie: req.body.categorie },
-        { brand: req.body.brand }
+        { brand: req.body.brand },
+        {
+            name: req.body.name,
+            price: req.body.price,
+            availability: req.body.availability,
+            amount: req.body.amout
+        }
       );
       res.json("Сделано");
     } catch (e) {

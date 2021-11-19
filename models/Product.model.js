@@ -21,6 +21,10 @@ const productSchema = mongoose.Schema({
     ref: "Brand",
     required: mongoose.SchemaTypes.ObjectId,
   },
+  amount: {
+      type : Number,
+      required: true
+  }
 });
 
 const Product = mongoose.model("Product", productSchema);
