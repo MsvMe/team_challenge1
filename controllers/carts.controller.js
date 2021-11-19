@@ -1,4 +1,5 @@
-const Carts = require("../models/Cart.model.model");
+const Carts = require("../models/Cart.model");
+
 module.exports.controllerCarts = {
   postCarts: async (req, res) => {
     try {
@@ -49,7 +50,7 @@ module.exports.controllerCarts = {
    patchCartsProductRemove: async (req, res) => {
     try{
       const carts = await Carts.findByIdAndUpdate(req.params.id, {$pull: {product: req.body.product, new: true}})
-      res.json(ERROR)
+      res.json(carts)
     } catch (ERROR) {
       res.json(ERROR)
     }

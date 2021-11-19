@@ -1,10 +1,9 @@
-const { Mongoose } = require("mongoose");
-const Product = require("../models/Categorie.model");
+const Product = require("../models/Product.model");
 
 module.exports.productConroller = {
   getProduct: async (req, res) => {
     try {
-      const productFind = await Product.find();
+      const productFind = await Product.find().populate("brand categorie");
       res.json(productFind);
     } catch (e) {
       res.json(e.message);
@@ -14,9 +13,11 @@ module.exports.productConroller = {
     try {
       await Product.create({
         name: req.body.name,
-        price: req.body.name,
-        availability: req.body.name,
-        amout: req.body.name
+        amount: req.body.amount,
+        price: req.body.price,
+        availability: req.body.availability,
+        categorie: req.body.categorie,
+        brand: req.body.brand
       });
       res.json("Продукт добавлен");
     } catch (e) {
@@ -35,13 +36,13 @@ module.exports.productConroller = {
     try {
       await Product.findByIdAndUpdate(
         req.params.id,
-        { categorie: req.body.categorie },
-        { brand: req.body.brand },
         {
             name: req.body.name,
             price: req.body.price,
             availability: req.body.availability,
-            amount: req.body.amout
+            amount: req.body.amount,
+            categorie: req.body.categorie,
+            brand: req.body.brand
         }
       );
       res.json("Сделано");
@@ -51,7 +52,7 @@ module.exports.productConroller = {
   },
   getProductCategorie: async (req, res) => {
     try {
-      const ProdCat = Product.find({ categorie: req.params.id });
+      const ProdCat = await Product.find({ categorie: req.params.id }).populate("brand categorie");
       res.json(ProdCat);
     } catch (e) {
       res.json(e.message);
@@ -59,7 +60,7 @@ module.exports.productConroller = {
   },
   getProductBrand: async (req, res) => {
     try {
-      const ProdBrand = Product.find({ brand: req.params.id });
+      const ProdBrand = await Product.find({ brand: req.params.id }).populate("brand categorie");
       res.json(ProdBrand);
     } catch (e) {
       res.json(e.message);

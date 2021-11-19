@@ -15,11 +15,11 @@ const productSchema = mongoose.Schema({
   },
   categorie: {
     ref: "Categorie",
-    required: mongoose.SchemaTypes.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
   },
   brand: {
     ref: "Brand",
-    required: mongoose.SchemaTypes.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
   },
   amount: {
       type : Number,
@@ -28,4 +28,5 @@ const productSchema = mongoose.Schema({
 });
 
 const Product = mongoose.model("Product", productSchema);
+
 module.exports = Product;

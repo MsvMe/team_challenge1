@@ -15,7 +15,7 @@ module.exports.brandController = {
       const deleteBrand = await Brand.findByIdAndDelete(req.params.id);
       res.json("Бренд удален");
     } catch (e) {
-      res, json(e.message);
+      res.json(e.message);
     }
   },
   patchBrandById: async (req, res) => {
@@ -25,7 +25,7 @@ module.exports.brandController = {
         { name: req.body.name },
         { new: true }
       );
-      res, json("Данные бренда изменены");
+      res.json("Данные бренда изменены");
     } catch (e) {
       res.json(e.message);
     }

@@ -4,7 +4,7 @@ const Review = require("../models/Review.model");
 module.exports.reviewsController = {
     getAllReviews: async (req, res) => {
         try {
-            const showAllReviews = await Review.find()
+            const showAllReviews = await Review.find().populate("user product")
             res.json(showAllReviews)
         } catch (error) {
             res.json(error.message)
@@ -53,7 +53,7 @@ module.exports.reviewsController = {
     },
     getAllReviewsByProduct: async (req, res) => {
         try {
-            const showR = await Review.find({product: req.params.id})
+            const showR = await Review.find({product: req.params.id}).populate("user product")
             res.json(showR)
         } catch (error) {
             res.json(error.message)
